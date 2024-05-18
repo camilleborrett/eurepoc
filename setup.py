@@ -8,7 +8,7 @@ setup(
     description='Wrapper for the EuRepoC API',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/camilleswp/EuRepoC_database',
+    url='https://github.com/camilleborrett/eurepoc',
     license='MIT',
     packages=find_packages(),
     install_requires=['requests', 'nested_query_string', 'pandas', 'datetime', 'pydantic', 'typing'],
