@@ -40,7 +40,7 @@ Example usage:
 
     data = query_db.get_data()
 
-    incident_df = IncidentDataFrames(data)
+    incident_df = eurepoc.IncidentDataFrames(data)
     receivers = incident_df.receivers()
     attributions = incident_df.attributions()
     initiators = incident_df.initiators()
