@@ -12,7 +12,7 @@ manipulation and analysis. These dfs can be easily joined using the `incidents_i
 
 Refer to the main EuRepoC website (https://www.eurepoc.eu/) for more information about the data collection
 methodology. The EuRepoC Codebook provides detailed information about the substantive meaning of each of the
-variables in the data here: https://www.eurepoc.eu/codebook.
+variables in the data here: https://eurepoc.eu/wp-content/uploads/2023/07/EuRepoC_Codebook_1_2.pdf.
 
 Quickstart
 ==========
@@ -40,7 +40,7 @@ Example usage:
 
     data = query_db.get_data()
 
-    incident_df = IncidentDataFrames(data)
+    incident_df = eurepoc.IncidentDataFrames(data)
     receivers = incident_df.receivers()
     attributions = incident_df.attributions()
     initiators = incident_df.initiators()

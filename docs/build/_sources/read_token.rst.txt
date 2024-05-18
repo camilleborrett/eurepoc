@@ -1,7 +1,7 @@
 read_token
 ==========
 
-.. automodule:: read_token
+.. automodule:: eurepoc.read_token
    :members:
    :undoc-members:
    :show-inheritance:

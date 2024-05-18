@@ -16,7 +16,7 @@ Leaving the filters empty will return all data. You can find these exact strings
    date_type
    flag_type
 
-.. automodule:: database_query
+.. automodule:: eurepoc.database_query
    :members:
    :undoc-members:
    :show-inheritance:

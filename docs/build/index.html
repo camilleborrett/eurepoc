@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>EuRepoC Package Documentation &#8212; EuRepoC 0.1.0 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EuRepoC Package Documentation &#8212; EuRepoC 0.1.2 documentation</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
     <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?v=bb723527" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css?v=b20cc3f5" />
     
-    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/documentation_options.js?v=92734c54"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
@@ -114,7 +114,7 @@
           </li>
           <li>
               
-              <a href="#">EuRepoC 0.1.0 documentation</a> &#187;
+              <a href="#">EuRepoC 0.1.2 documentation</a> &#187;
               
           </li>
         <li class="nav-item nav-item-this"><a href="">EuRepoC Package Documentation</a></li>
@@ -155,7 +155,7 @@ data queries through a set of filters and to preprocess, unnest and clean the St
 manipulation and analysis. These dfs can be easily joined using the <cite>incidents_id</cite> column.</p>
 <p>Refer to the main EuRepoC website (<a class="reference external" href="https://www.eurepoc.eu/">https://www.eurepoc.eu/</a>) for more information about the data collection
 methodology. The EuRepoC Codebook provides detailed information about the substantive meaning of each of the
-variables in the data here: <a class="reference external" href="https://www.eurepoc.eu/codebook">https://www.eurepoc.eu/codebook</a>.</p>
+variables in the data here: <a class="reference external" href="https://eurepoc.eu/wp-content/uploads/2023/07/EuRepoC_Codebook_1_2.pdf">https://eurepoc.eu/wp-content/uploads/2023/07/EuRepoC_Codebook_1_2.pdf</a>.</p>
 </section>
 <section id="quickstart">
 <h1>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading">¶</a></h1>
@@ -177,7 +177,7 @@ variables in the data here: <a class="reference external" href="https://www.eure
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">query_db</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
 
-<span class="n">incident_df</span> <span class="o">=</span> <span class="n">IncidentDataFrames</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">incident_df</span> <span class="o">=</span> <span class="n">eurepoc</span><span class="o">.</span><span class="n">IncidentDataFrames</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">receivers</span> <span class="o">=</span> <span class="n">incident_df</span><span class="o">.</span><span class="n">receivers</span><span class="p">()</span>
 <span class="n">attributions</span> <span class="o">=</span> <span class="n">incident_df</span><span class="o">.</span><span class="n">attributions</span><span class="p">()</span>
 <span class="n">initiators</span> <span class="o">=</span> <span class="n">incident_df</span><span class="o">.</span><span class="n">initiators</span><span class="p">()</span>
@@ -265,7 +265,7 @@ variables in the data here: <a class="reference external" href="https://www.eure
           </li>
           <li>
               
-              <a href="#">EuRepoC 0.1.0 documentation</a> &#187;
+              <a href="#">EuRepoC 0.1.2 documentation</a> &#187;
               
           </li>
         <li class="nav-item nav-item-this"><a href="">EuRepoC Package Documentation</a></li>
