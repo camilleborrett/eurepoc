@@ -10,7 +10,7 @@ print("Project root added to PYTHONPATH:", os.path.abspath('../..'))
 # Project information
 project = 'EuRepoC'
 author = 'Camille Borrett'
-release = '0.1.0'
+release = '0.1.2'
 
 # General configuration
 extensions = [
