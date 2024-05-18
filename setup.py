@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='eurepoc',
-    version='0.1.1',
+    version='0.1.2',
     author='Camille Borrett',
     author_email='camille.borrett@posteo.net',
     description='Wrapper for the EuRepoC API',
@@ -12,7 +12,7 @@ setup(
         'Documentation': 'https://eurepoc.readthedocs.io/',
         'Source': 'https://github.com/camilleborrett/eurepoc',
         'Tracker': 'https://github.com/camilleborrett/eurepoc/issues',
-        'Project': 'https://eurepoc.eu/'
+        'EuRepoC Project': 'https://eurepoc.eu/'
     },
     license='MIT',
     packages=find_packages(),
