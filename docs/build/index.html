@@ -151,7 +151,7 @@
 <h1>EuRepoC Package Documentation<a class="headerlink" href="#eurepoc-package-documentation" title="Link to this heading">¶</a></h1>
 <p>The EuRepoC package is a wrapper around the main EuRepoC Strapi API. It is designed to streamline
 data queries through a set of filters and to preprocess, unnest and clean the Strapi output. The
-<cite>IncidentDataFrames</cite> class automatically converts the data into multiple pandas dataframes (dfs) for easier
+<cite>IncidentDataFrameGenerator</cite> class automatically converts the data into multiple pandas dataframes (dfs) for easier
 manipulation and analysis. These dfs can be easily joined using the <cite>incidents_id</cite> column.</p>
 <p>Refer to the main EuRepoC website (<a class="reference external" href="https://www.eurepoc.eu/">https://www.eurepoc.eu/</a>) for more information about the data collection
 methodology. The EuRepoC Codebook provides detailed information about the substantive meaning of each of the
@@ -168,19 +168,21 @@ variables in the data here: <a class="reference external" href="https://eurepoc.
 
 <span class="n">TOKEN</span> <span class="o">=</span> <span class="n">eurepoc</span><span class="o">.</span><span class="n">read_token</span><span class="p">()</span>
 
-<span class="n">query_db</span> <span class="o">=</span> <span class="n">eurepoc</span><span class="o">.</span><span class="n">DatabaseQuery</span><span class="p">(</span>
-     <span class="n">TOKEN</span><span class="p">,</span>
-     <span class="n">receiver_region</span><span class="o">=</span><span class="s2">&quot;EU&quot;</span><span class="p">,</span>
-     <span class="n">receiver_category</span><span class="o">=</span><span class="s2">&quot;Critical infrastructure&quot;</span><span class="p">,</span>
-     <span class="n">initiator_country</span><span class="o">=</span><span class="s2">&quot;Russia&quot;</span>
-  <span class="p">)</span>
+<span class="n">query</span> <span class="o">=</span> <span class="n">eurepoc</span><span class="o">.</span><span class="n">DatabaseQuery</span><span class="p">(</span>
+   <span class="n">TOKEN</span><span class="p">,</span>
+   <span class="n">receiver_region</span><span class="o">=</span><span class="s2">&quot;EU&quot;</span><span class="p">,</span>
+   <span class="n">receiver_category</span><span class="o">=</span><span class="s2">&quot;Critical infrastructure&quot;</span><span class="p">,</span>
+   <span class="n">initiator_country</span><span class="o">=</span><span class="s2">&quot;Russia&quot;</span>
+<span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">query_db</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">execute_query</span><span class="p">()</span>
 
-<span class="n">incident_df</span> <span class="o">=</span> <span class="n">eurepoc</span><span class="o">.</span><span class="n">IncidentDataFrames</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">receivers</span> <span class="o">=</span> <span class="n">incident_df</span><span class="o">.</span><span class="n">receivers</span><span class="p">()</span>
-<span class="n">attributions</span> <span class="o">=</span> <span class="n">incident_df</span><span class="o">.</span><span class="n">attributions</span><span class="p">()</span>
-<span class="n">initiators</span> <span class="o">=</span> <span class="n">incident_df</span><span class="o">.</span><span class="n">initiators</span><span class="p">()</span>
+<span class="n">df_generator</span> <span class="o">=</span> <span class="n">eurepoc</span><span class="o">.</span><span class="n">IncidentDataFrameGenerator</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">main_df</span> <span class="o">=</span> <span class="n">df_generator</span><span class="o">.</span><span class="n">get_main_data</span><span class="p">()</span>
+<span class="n">receivers_df</span> <span class="o">=</span> <span class="n">df_generator</span><span class="o">.</span><span class="n">get_receivers</span><span class="p">()</span>
+<span class="n">attributions_df</span> <span class="o">=</span> <span class="n">df_generator</span><span class="o">.</span><span class="n">get_attributions</span><span class="p">()</span>
+<span class="n">initiators_df</span> <span class="o">=</span> <span class="n">df_generator</span><span class="o">.</span><span class="n">get_initiators</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -191,7 +193,7 @@ variables in the data here: <a class="reference external" href="https://eurepoc.
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="read_token.html">read_token</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DatabaseQuery.html">DatabaseQuery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="IncidentDataFrames.html">IncidentDataFrames</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IncidentDataFrameGenerator.html">IncidentDataFrameGenerator</a></li>
 </ul>
 </div>
 </section>

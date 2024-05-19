@@ -20,3 +20,4 @@ Leaving the filters empty will return all data. You can find these exact strings
    :members:
    :undoc-members:
    :show-inheritance:
+   :exclude-members: __dict__,__weakref__,__module__,__init__,_query_database

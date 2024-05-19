@@ -2,9 +2,8 @@ from setuptools import setup, find_packages
 
 setup(
     name='eurepoc',
-    version='0.1.2',
+    version='0.1.3',
     author='Camille Borrett',
-    author_email='camille.borrett@posteo.net',
     description='Wrapper for the EuRepoC API',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
@@ -16,6 +15,11 @@ setup(
     },
     license='MIT',
     packages=find_packages(),
-    install_requires=['requests', 'nested_query_string', 'pandas', 'datetime', 'pydantic', 'typing'],
+    install_requires=[
+        'requests>=2.31.0,<3.0.0',
+        'nested_query_string>=0.0.1,<0.1.0',
+        'pandas>=2.2.2,<3.0.0',
+        'pydantic>=2.7.1,<3.0.0'
+    ],
     python_requires='>=3.6',
 )

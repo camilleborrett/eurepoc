@@ -17,8 +17,19 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.viewcode',
-    'sphinx.ext.autosummary'
+    'sphinx.ext.autosummary',
+    'sphinx_autodoc_typehints',
 ]
+
+autodoc_default_options = {
+    'members': True,
+    'undoc-members': True,
+    'private-members': True,
+    'special-members': True,
+    'inherited-members': True,
+    'show-inheritance': True,
+    'exclude-members': '__dict__,__weakref__,__module__, __init__',
+}
 
 templates_path = ['_templates']
 exclude_patterns = []

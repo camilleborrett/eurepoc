@@ -1,3 +1,4 @@
 sphinx
 sphinx-rtd-theme
 python-docs-theme
+sphinx-autodoc-typehints

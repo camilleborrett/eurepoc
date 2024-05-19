@@ -1,15 +1,17 @@
 from datetime import datetime
 import pandas as pd
-from eurepoc.table_models import (MainData, InclusionCriteria, SourceDisclosure, IncidentType, Receiver, Attributions,
+from eurepoc.table_models import (
+    MainData, InclusionCriteria, SourceDisclosure, IncidentType, Receiver, Attributions,
     AttributionBases, AttributionTypes, AttributionCountries, AttributionActors, AttributionCompanies,
     AttributionLegalReferences, Initiators, InitiatorsCategories, CyberConflictIssues, OfflineConflictIssues,
     OfflineConflictIntensities, PoliticalResponses, PoliticalResponseTypes, TechnicalCodings, CyberIntensity,
     MitreInitialAccess, MitreImpact, ImpactIndicator, LegalCodings, ILBreachIndicator, LegalResponses,
-    LegalResponseTypes, SourceUrls, SourceNames, SourceCategories, AttributionSources)
+    LegalResponseTypes, SourceUrls, SourceNames, SourceCategories, AttributionSources
+)
 
 # All functions in this file, retreive the variables from the list of incident dictionaries obtained by running the
-# .get_data() method from the DatabaseQuery class and return a list of objects of the respective table model. These are
-# then used to create the dataframes in the IncidentDataFrames class.
+# .execute_query() method from the DatabaseQuery class and return a list of objects of the respective table model. These are
+# then used to create the dataframes in the IncidentDataFrameGenerator class.
 
 def parse_date(date_str):
     """Parses a date string to a datetime object, returns None if input is None."""

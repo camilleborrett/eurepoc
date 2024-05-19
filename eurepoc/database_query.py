@@ -48,7 +48,7 @@ class DatabaseQuery:
         self.range_start_date = start_date
         self.range_end_date = end_date
 
-    def get_data(self):
+    def execute_query(self):
         """
         Fetches and cleans data from the EuRepoC database.
 
