@@ -1,11 +1,17 @@
 import os
 import sys
+import logging
 
 # Add the project root directory to the PYTHONPATH
 sys.path.insert(0, os.path.abspath('../..'))
 
 # Verify the added path (optional for debugging)
 print("Project root added to PYTHONPATH:", os.path.abspath('../..'))
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+logger.debug("Debugging enabled for Sphinx")
+
 
 # Project information
 project = 'EuRepoC'

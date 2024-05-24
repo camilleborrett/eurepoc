@@ -288,16 +288,28 @@ def process_initiators_data(full_data):
     for incident in full_data:
         for i in range(len(incident["attributions"])):
             if isinstance(incident["attributions"][i], dict):
-                initiators_data.append(
-                    Initiators(
-                        initiator_id="init_" + str(incident["id"]) + "_" + str(i),
-                        incident_id=int(incident["id"]),
-                        attribution_id=str(incident["attributions"][i]['attribution_id']),
-                        settled_initiator=incident["attributions"][i]['settled'],
-                        initiator_name=incident["attributions"][i]['attributed_initiator_name'][0],
-                        initiator_country=incident["attributions"][i]['attributed_initiator_country'][0],
+                names_length = len(incident["attributions"][i].get('attributed_initiator_name', []))
+                countries_length = len(incident["attributions"][i].get('attributed_initiator_country', []))
+                max_length = max(names_length, countries_length)
+                for j in range(max_length):
+                    if j < names_length:
+                        initiator_name = incident["attributions"][i]['attributed_initiator_name'][j]
+                    else:
+                        initiator_name = "Not available"
+                    if j < countries_length:
+                        initiator_country = incident["attributions"][i]['attributed_initiator_country'][j]
+                    else:
+                        initiator_country = "Not available"
+                    initiators_data.append(
+                        Initiators(
+                            initiator_id="init_" + str(incident["id"]) + "_" + str(j),
+                            incident_id=int(incident["id"]),
+                            attribution_id=str(incident["attributions"][i]['attribution_id']),
+                            settled_initiator=incident["attributions"][i]['settled'],
+                            initiator_name=initiator_name,
+                            initiator_country=initiator_country
+                        )
                     )
-                )
             else:
                 initiators_data.append(
                     Initiators(
@@ -317,14 +329,24 @@ def process_initiators_categories_data(full_data):
     for incident in full_data:
         for i in range(len(incident["attributions"])):
             if isinstance(incident["attributions"][i], dict):
-                for j in range(len(incident["attributions"][i]['attributed_initiator_category'])):
-                    initiators_categories_data.append(
-                        InitiatorsCategories(
-                            initiator_id="init_" + str(incident["id"]) + "_" + str(i),
-                            initiator_category=incident["attributions"][i]['attributed_initiator_category'][j],
-                            initiator_subcategory=incident["attributions"][i]['attributed_initiator_category_subcode'][j]
+                if len(incident["attributions"][i]['attributed_initiator_category']) > len(incident["attributions"][i]['attributed_initiator_name']):
+                    for y in range(len(incident["attributions"][i]['attributed_initiator_category'])):
+                        initiators_categories_data.append(
+                            InitiatorsCategories(
+                                initiator_id="init_" + str(incident["id"]) + "_" + str(y),
+                                initiator_category=incident["attributions"][i]['attributed_initiator_category'][y],
+                                initiator_subcategory=incident["attributions"][i]['attributed_initiator_category_subcode'][y]
+                            )
                         )
-                    )
+                else:
+                    for y in range(len(incident["attributions"][i]['attributed_initiator_name'])):
+                        initiators_categories_data.append(
+                            InitiatorsCategories(
+                                initiator_id="init_" + str(incident["id"]) + "_" + str(y),
+                                initiator_category=incident["attributions"][i]['attributed_initiator_category'][y],
+                                initiator_subcategory=incident["attributions"][i]['attributed_initiator_category_subcode'][y]
+                            )
+                        )
             else:
                 initiators_categories_data.append(
                     InitiatorsCategories(
