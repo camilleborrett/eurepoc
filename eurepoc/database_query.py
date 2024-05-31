@@ -9,7 +9,7 @@ class DatabaseQuery:
         Parameters:
             token (str): Authentication token for the EuRepoC database.
             receiver_region (str, optional): Default is None.
-            receiver_country (str, optional): Default is None.
+            receiver_country (str, optional): ISO-alpha-3 code. Default is None.
             receiver_category (str, optional): Default is None.
             initiator_country (str, optional): Default is None.
             date_type (str, optional): Refers to the type of date to filter by. This can be either: 'start_date', referring to the start date of the incident; or 'createdAt', referring to the date the incident was added to the database. Default is None.

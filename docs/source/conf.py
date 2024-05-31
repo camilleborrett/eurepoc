@@ -12,6 +12,7 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 logger.debug("Debugging enabled for Sphinx")
 
+print("Current PYTHONPATH:", sys.path)
 
 # Project information
 project = 'EuRepoC'

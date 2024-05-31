@@ -22,7 +22,7 @@ def build_filters(
         filters.append(f"filters[$and][][receiver][country][country_regions][region][name][$eq]={receiver_region}")
 
     if receiver_country:
-        filters.append(f"filters[$and][][receiver][country][name][$eq]={receiver_country}")
+        filters.append(f"filters[$and][][receiver][country][alpha_3_code][$eq]={receiver_country}")
 
     if date_type and range_start_date:
         filters.append(f"filters[{date_type}][$gte]={range_start_date}T00:00:00.000Z")

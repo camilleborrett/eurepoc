@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='eurepoc',
-    version='0.1.5',
+    version='0.1.6',
     author='Camille Borrett',
     description='Wrapper for the EuRepoC API',
     long_description=open('README.md').read(),
