@@ -9,7 +9,7 @@ from eurepoc.tables import (
     process_technical_codings_data, process_cyber_intensity_data, process_mitre_initial_access_data,
     process_mitre_impact_data, process_impact_indicator_data, process_legal_codings_data,
     process_il_breach_indicator_data, process_legal_responses_data, process_legal_responses_type_data,
-    process_source_urls_data, process_source_names_data, process_sources_attributions_data, clean_initiators
+    process_source_urls_data, process_sources_attributions_data, clean_initiators, process_article_data
 )
 
 
@@ -171,10 +171,10 @@ class IncidentDataFrameGenerator:
         """Columns: source_urls_id, incident_id, source_url"""
         return model_to_dataframe(process_source_urls_data(self.data))
 
-    def get_source_names(self):
-        """Columns: source_url_id, incident_id, source_name"""
-        return model_to_dataframe(process_source_names_data(self.data))
-
     def get_attribution_sources(self):
         """Columns: incident_id, attribution_source_url"""
         return model_to_dataframe(process_sources_attributions_data(self.data))
+
+    def get_articles_data(self):
+        """Columns: incident_id, article_id, article_title, article_text, article_url, article_publication_date, article_scraped_date, source_name, source_category, source_url"""
+        return model_to_dataframe(process_article_data(self.data))

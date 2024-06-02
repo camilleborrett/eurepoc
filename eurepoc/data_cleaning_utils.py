@@ -96,8 +96,6 @@ def clean_incidents_dict(data):
 
             "casualties": [],
 
-            "sources_name": [],
-            "sources_category": [],
             "sources_url": [],
             "sources_attribution": [],
             "link_incident_EuRepoC": "",
@@ -137,7 +135,6 @@ def clean_incidents_dict(data):
             incident_dic.update(end_date="Not available")
 
         incident_dic["logs"].append(incident["logs"])
-        incident_dic["articles"].append(incident["articles"]["data"])
 
         for elem in incident["source_incident_detection_disclosure"]:
             incident_dic["source_incident_detection_disclosure"].append(safe_get(
@@ -533,10 +530,33 @@ def clean_incidents_dict(data):
                 incident, "impact_indicator", "economic_impact", "code", "code", "data", "attributes", "title"))
 
         for article in incident["articles"]["data"]:
+
             incident_dic["sources_url"].append(safe_get(article, "attributes", "url"))
-            incident_dic["sources_name"].append(safe_get(article, "attributes", "source", "data", "attributes", "name"))
-            incident_dic["sources_category"].append(safe_get(
+
+            article_dict = {
+                "article_id": "",
+                "article_title": "",
+                "article_text": "",
+                "article_url": "",
+                "article_publication_date": "",
+                "article_scraped_date": "",
+                "source_name": "",
+                "source_category": "",
+                "source_url": ""
+            }
+
+            article_dict.update(article_id=article["id"])
+            article_dict.update(article_title=safe_get(article, "attributes", "title"))
+            article_dict.update(article_text=safe_get(article, "attributes", "data"))
+            article_dict.update(article_url=safe_get(article, "attributes", "url"))
+            article_dict.update(article_publication_date=safe_get(article, "attributes", "published_date"))
+            article_dict.update(article_scraped_date=safe_get(article, "attributes", "scraped_date"))
+            article_dict.update(source_name=safe_get(article, "attributes", "source", "data", "attributes", "name"))
+            article_dict.update(source_url=safe_get(article, "attributes", "url"))
+            article_dict.update(source_category=safe_get(
                 article, "attributes", "source", "data", "attributes", "category"))
+
+            incident_dic["articles"].append(article_dict)
 
         if incident["sources_attribution"]["data"] is not None:
             for source in incident["sources_attribution"]["data"]:

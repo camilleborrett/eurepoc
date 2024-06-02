@@ -303,24 +303,6 @@ class SourceUrls(BaseModel):
         from_attributes = True
 
 
-class SourceNames(BaseModel):
-    source_url_id: str
-    incident_id: int
-    source_name: Optional[str] = None
-
-    class Config:
-        from_attributes = True
-
-
-class SourceCategories(BaseModel):
-    source_url_id: str
-    incident_id: int
-    source_category: Optional[str] = None
-
-    class Config:
-        from_attributes = True
-
-
 class AttributionSources(BaseModel):
     incident_id: int
     attribution_source_url: Optional[str] = None
@@ -333,15 +315,13 @@ class Articles(BaseModel):
     article_id: int
     incident_id: int
     article_title: Optional[str] = None
-    article_date: Optional[datetime] = None
+    article_text: Optional[str] = None
+    article_publication_date: Optional[datetime] = None
+    article_scraped_date: Optional[datetime] = None
     article_url: Optional[str] = None
-    article_status: Optional[str] = None
     source_url: Optional[str] = None
     source_name: Optional[str] = None
     source_category: Optional[str] = None
-    source_status: Optional[str] = None
-    source_country: Optional[str] = None
-    article_text: Optional[str] = None
 
     class Config:
         from_attributes = True

@@ -6,7 +6,7 @@ from eurepoc.table_models import (
     AttributionLegalReferences, Initiators, InitiatorsCategories, CyberConflictIssues, OfflineConflictIssues,
     OfflineConflictIntensities, PoliticalResponses, PoliticalResponseTypes, TechnicalCodings, CyberIntensity,
     MitreInitialAccess, MitreImpact, ImpactIndicator, LegalCodings, ILBreachIndicator, LegalResponses,
-    LegalResponseTypes, SourceUrls, SourceNames, SourceCategories, AttributionSources
+    LegalResponseTypes, SourceUrls, AttributionSources, Articles
 )
 
 # All functions in this file, retreive the variables from the list of incident dictionaries obtained by running the
@@ -687,34 +687,6 @@ def process_source_urls_data(full_data):
     return sources_url_data
 
 
-def process_source_names_data(full_data):
-    sources_names_data = []
-    for incident in full_data:
-        for i in range(len(incident['sources_name'])):
-            sources_names_data.append(
-                SourceNames(
-                    source_url_id="source_" + str(incident["id"]) + "_" + str(i),
-                    incident_id=int(incident["id"]),
-                    source_name=incident['sources_name'][i]
-                )
-            )
-    return sources_names_data
-
-
-def process_source_categories_data(full_data):
-    sources_categories_data = []
-    for incident in full_data:
-        for i in range(len(incident['sources_name'])):
-            sources_categories_data.append(
-                SourceCategories(
-                    source_url_id="source_" + str(incident["id"]) + "_" + str(i),
-                    incident_id=int(incident["id"]),
-                    source_category=incident['sources_category'][i]
-                )
-            )
-    return sources_categories_data
-
-
 def process_sources_attributions_data(full_data):
     sources_attributions_data = []
     for incident in full_data:
@@ -726,6 +698,28 @@ def process_sources_attributions_data(full_data):
                 )
             )
     return sources_attributions_data
+
+
+def process_article_data(full_data):
+    articles_data = []
+    for incident in full_data:
+        for article in incident['articles']:
+            if isinstance(article, dict):
+                articles_data.append(
+                    Articles(
+                        article_id=str(article["article_id"]),
+                        incident_id=int(incident["id"]),
+                        article_title=article['article_title'],
+                        article_text=article['article_text'],
+                        article_publication_date=article['article_publication_date'],
+                        article_scraped_date=article['article_scraped_date'],
+                        article_url=article['article_url'],
+                        source_url=article['source_url'],
+                        source_name=article['source_name'],
+                        source_category=article['source_category']
+                    )
+                )
+    return articles_data
 
 
 def model_to_dataframe(models):
